@@ -49,5 +49,72 @@
 // =============================================================================
 
 #include <iostream>
+#include <iomanip>
 using namespace std;
 
+void part_a() {
+    int n;
+    cout << "How many terms? ";
+    cin >> n;
+
+    
+    if (n <= 0) {
+        cout << "Error: N must be a positive integer.\n";
+        return;
+    }
+
+    cout << "Fibonacci sequence:";
+    
+    long long a = 0;
+    long long b = 1;
+
+    for (int i = 0; i < n; ++i) {
+        cout << " " << a;
+        long long next = a + b;
+        a = b;
+        b = next;
+    }
+    cout << "\n";
+}
+
+
+void part_b() {
+    long long number;
+    cout << "Enter a number to check: ";
+    cin >> number;
+
+    if (number < 0) {
+        cout << number << " is NOT a Fibonacci number.\n";
+        return;
+    }
+
+    long long a = 0;
+    long long b = 1;
+    bool found = false;
+
+    while (a <= number) {
+        if (a == number) {
+            found = true;
+            break;
+        }
+        long long next = a + b;
+        a = b;
+        b = next;
+    }
+
+    if (found) {
+        cout << number << " is a Fibonacci number.\n";
+    } else {
+        cout << number << " is NOT a Fibonacci number.\n";
+    }
+}
+
+int main() {
+    cout << "--- Part A ---\n";
+    part_a();
+
+    cout << "\n--- Part B ---\n";
+    part_b();
+
+    return 0;
+}

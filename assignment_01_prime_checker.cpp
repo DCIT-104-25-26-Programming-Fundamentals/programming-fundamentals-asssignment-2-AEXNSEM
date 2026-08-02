@@ -36,4 +36,30 @@
 
 #include <iostream>
 using namespace std;
+#include <cmath>
 
+bool prime_check(int n) {
+    if (n < 2) {
+        return false;
+    }
+    
+    int limit = static_cast<int>(std::sqrt(n));
+    for (int num = 2; num <= limit; ++num) {
+        if (n % num == 0) {
+            return false;
+        }
+    }
+    return true;
+}
+
+int main() {
+    int number;
+    cout << "Enter a number: ";
+    cin >> number;
+    if (prime_check(number)) {
+        cout << number << " is a prime number." << std::endl;
+    } else {
+        cout << number << " is NOT a prime number." << std::endl;
+    }  
+     return 0;  
+}

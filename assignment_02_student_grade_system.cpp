@@ -45,4 +45,43 @@
 
 #include <iostream>
 using namespace std;
+#include <string>
 
+string getgrade(double score) {
+    if (score < 0|| score > 100) {
+        return "None"; // Invalid score
+    } else if (score >= 80) {
+        return "A";
+    }else if (score >=70 && score <= 79) {
+        return "B";
+    } else if (score >= 60 && score <= 69) {
+        return "C";
+    } else if (score >= 50 && score <= 59) {
+        return "D";
+    } else {
+        return "F";     
+    }
+}
+
+int main() {
+    double score;
+    cout << "Enter student score (0-100): ";
+    cin >> score;
+
+    string final_grade = getgrade(score);
+
+    if (final_grade == "None") {
+        cout << "Error: Score must be between 0 and 100." << std::endl;
+    } else if (final_grade == "A") {
+        cout << "GRADE: A" << " (EXCELLENT)" << std::endl;
+    } else if (final_grade == "B") {
+        cout << "GRADE: B" <<" (VERY GOOD)" << std::endl;  
+    }   else if (final_grade == "C") {
+
+        cout << "GRADE: C" <<" (GOOD)" << std::endl;  
+    }   else if (final_grade == "D") {
+        cout << "GRADE: D" <<" (PASS)" << std::endl;  
+    }   else if (final_grade == "F") {
+        cout << "GRADE: F" <<" (FAIL)" << std::endl;  
+    }
+    return 0;

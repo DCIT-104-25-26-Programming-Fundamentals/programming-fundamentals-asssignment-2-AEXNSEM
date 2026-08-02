@@ -40,5 +40,76 @@
 // =============================================================================
 
 #include <iostream>
+#include <iostream>
+#include <vector>
 using namespace std;
 
+// Function to compute sum using a loop
+double compute_sum(const vector<double>& numbers) {
+    double total = 0.0;
+    for (size_t i = 0; i < numbers.size(); ++i) {
+        total += numbers[i];
+    }
+    return total;
+}
+
+// Function to compute average
+double compute_average(const vector<double>& numbers) {
+    if (numbers.empty()) return 0.0;
+    return compute_sum(numbers) / numbers.size();
+}
+
+// Function to find maximum using a loop
+double compute_max(const vector<double>& numbers) {
+    double max_val = numbers[0];
+    for (size_t i = 1; i < numbers.size(); ++i) {
+        if (numbers[i] > max_val) {
+            max_val = numbers[i];
+        }
+    }
+    return max_val;
+}
+
+// Function to find minimum using a loop
+double compute_min(const vector<double>& numbers) {
+    double min_val = numbers[0];
+    for (size_t i = 1; i < numbers.size(); ++i) {
+        if (numbers[i] < min_val) {
+            min_val = numbers[i];
+        }
+    }
+    return min_val;
+}
+
+int main() {
+    int count;
+    cout << "How many numbers? ";
+    cin >> count;
+
+    // Validate positive integer requirement
+    if (count <= 0) {
+        cout << "Error: Number of elements must be positive." << endl;
+        return 1;
+    }
+
+    vector<double> numbers(count);
+    for (int i = 0; i < count; ++i) {
+        cout << "Enter number " << (i + 1) << ": ";
+        cin >> numbers[i];
+    }
+
+    // Compute statistics using dedicated functions
+    double sum = compute_sum(numbers);
+    double avg = compute_average(numbers);
+    double max_val = compute_max(numbers);
+    double min_val = compute_min(numbers);
+
+    // Display results matching expected output
+    cout << "\nResults:\n";
+    cout << "Sum:     " << sum << "\n";
+    cout << "Average: " << avg << "\n";
+    cout << "Maximum: " << max_val << "\n";
+    cout << "Minimum: " << min_val << "\n";
+
+    return 0;
+}
